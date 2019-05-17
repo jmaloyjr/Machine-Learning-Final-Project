@@ -63,6 +63,8 @@ def decisionTree(dtrain, ttrain, dtest):
 # Main function declaration
 def main():
 
+    print("Hello World")
+    
     # Just testing with parkinsons Data atm
     url = "http://archive.ics.uci.edu/ml/machine-learning-databases/parkinsons/parkinsons.data"
 
