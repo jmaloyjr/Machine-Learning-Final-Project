@@ -1,5 +1,5 @@
 # Test that you have all the correct packages
-print("Testing all required packages")
+print("\nPackages that will be required: sys, scipy, numpy, pandas, sklearn\n")
 # Python version
 import sys
 print('Python: {}'.format(sys.version))
