@@ -77,24 +77,36 @@ def main():
     data_train, data_test, target_train, target_test = train_test_split(data, target, test_size = 0.2, random_state = 10)
 
     # Running Guassian Naive Bayes
-    print("Running Naive-Bayes....\n")
+    start = time.time();
+    print("Running Naive-Bayes....")
     gnbPredicition = guassianNaiveBayes(data_train, target_train, data_test)
-    print("Naive-Bayes accuracy : " + str(accuracy_score(target_test, gnbPredicition, normalize = True)) + "\n")
+    print("Naive-Bayes accuracy : " + str(accuracy_score(target_test, gnbPredicition, normalize = True)))
+    end = time.time();
+    print("Total time: " + str(end - start) + "\n")
 
     # Running Support Vector Classification
-    print("Running Support Vector Classification....\n")
+    start = time.time();
+    print("Running Support Vector Classification....")
     svcPredicition = supportVectorClassification(data_train, target_train, data_test)
-    print("Support Vector Classification accuracy : " + str(accuracy_score(target_test, svcPredicition, normalize = True)) + "\n")
+    print("Support Vector Classification accuracy : " + str(accuracy_score(target_test, svcPredicition, normalize = True)))
+    end = time.time();
+    print("Total time: " + str(end - start) + "\n")
 
     # Running k nearest neighbors
-    print("Running K Neighbors Classifier....\n")
+    start = time.time();
+    print("Running K Neighbors Classifier....")
     kNearPredicition = kNeighbors(data_train, target_train, data_test)
-    print("K Neighbor Classifier accuracy : " + str(accuracy_score(target_test, kNearPredicition, normalize = True)) + "\n")
+    print("K Neighbor Classifier accuracy : " + str(accuracy_score(target_test, kNearPredicition, normalize = True)))
+    end = time.time();
+    print("Total time: " + str(end - start) + "\n")
 
     # Running Decision Tree
-    print("Running Decision Tree Classifier....\n")
+    start = time.time();
+    print("Running Decision Tree Classifier....")
     dTreePredicition = decisionTree(data_train, target_train, data_test)
-    print("Decision Tree Classifier accuracy : " + str(accuracy_score(target_test,dTreePredicition, normalize = True)) + "\n")
+    print("Decision Tree Classifier accuracy : " + str(accuracy_score(target_test,dTreePredicition, normalize = True)) )
+    end = time.time();
+    print("Total time: " + str(end - start) + "\n")
 
 
 if __name__ == "__main__":
