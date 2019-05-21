@@ -47,7 +47,7 @@ def supportVectorClassification(dtrain, ttrain, dtest):
 # Running training data through a k neighbors model
 def kNeighbors(dtrain, ttrain, dtest):
 
-    k = KNeighborsClassifier(n_neighbors = 3)
+    k = KNeighborsClassifier(n_neighbors = 3) # used n_neighbors = 3
     k.fit(dtrain, ttrain)
     prediction = k.predict(dtest)
     return prediction
@@ -63,8 +63,6 @@ def decisionTree(dtrain, ttrain, dtest):
 # Main function declaration
 def main():
 
-    print("Hello World")
-    
     # Just testing with parkinsons Data atm
     url = "http://archive.ics.uci.edu/ml/machine-learning-databases/parkinsons/parkinsons.data"
 
@@ -76,36 +74,51 @@ def main():
     # Splitting data into training and testing data ( Will go with 80:20 approach considering we don't have too much data with this set)
     data_train, data_test, target_train, target_test = train_test_split(data, target, test_size = 0.2, random_state = 10)
 
+    # Print info about the dataset
+    print(str(len(data))       + " elements in the total set")
+    print(str(len(data_train)) + " elements in the training set")
+    print(str(len(data_test))  + " elements in the testing set")
+    print() # Prints an empty line of spacing
+
     # Running Guassian Naive Bayes
-    start = time.time();
+    start = time.time()
     print("Running Naive-Bayes....")
     gnbPredicition = guassianNaiveBayes(data_train, target_train, data_test)
-    print("Naive-Bayes accuracy : " + str(accuracy_score(target_test, gnbPredicition, normalize = True)))
-    end = time.time();
+    gnbAccuracy = accuracy_score(target_test, gnbPredicition, normalize = True)
+    #print("Naive-Bayes accuracy : " + str(accuracy_score(target_test, gnbPredicition, normalize = True)))
+    print("Naive-Bayes accuracy : " + str(gnbAccuracy))
+    end = time.time()
+    print("     " + str(round(gnbAccuracy * len(data_test))) + " correctly classified out of " + str(len(data_test)))
     print("Total time: " + str(end - start) + "\n")
 
     # Running Support Vector Classification
-    start = time.time();
-    print("Running Support Vector Classification....")
-    svcPredicition = supportVectorClassification(data_train, target_train, data_test)
-    print("Support Vector Classification accuracy : " + str(accuracy_score(target_test, svcPredicition, normalize = True)))
-    end = time.time();
-    print("Total time: " + str(end - start) + "\n")
+    #start = time.time();
+    #print("Running Support Vector Classification....")
+    #svcPredicition = supportVectorClassification(data_train, target_train, data_test)
+    #print("Support Vector Classification accuracy : " + str(accuracy_score(target_test, svcPredicition, normalize = True)))
+    #end = time.time();
+    #print("Total time: " + str(end - start) + "\n")
 
     # Running k nearest neighbors
-    start = time.time();
+    start = time.time()
     print("Running K Neighbors Classifier....")
     kNearPredicition = kNeighbors(data_train, target_train, data_test)
-    print("K Neighbor Classifier accuracy : " + str(accuracy_score(target_test, kNearPredicition, normalize = True)))
-    end = time.time();
+    kNearAccuracy = accuracy_score(target_test, kNearPredicition, normalize = True)
+    #print("K Neighbor Classifier accuracy : " + str(accuracy_score(target_test, kNearPredicition, normalize = True)))
+    print("K Neighbor Classifier accuracy : " + str(kNearAccuracy))
+    end = time.time()
+    print("     " + str(round(kNearAccuracy * len(data_test))) + " correctly classified out of " + str(len(data_test)))
     print("Total time: " + str(end - start) + "\n")
 
     # Running Decision Tree
     start = time.time();
     print("Running Decision Tree Classifier....")
     dTreePredicition = decisionTree(data_train, target_train, data_test)
-    print("Decision Tree Classifier accuracy : " + str(accuracy_score(target_test,dTreePredicition, normalize = True)) )
+    dTreeAccuracy = accuracy_score(target_test,dTreePredicition, normalize = True)
+    #print("Decision Tree Classifier accuracy : " + str(accuracy_score(target_test,dTreePredicition, normalize = True)))
+    print("Decision Tree Classifier accuracy : " + str(dTreeAccuracy))
     end = time.time();
+    print("     " + str(round(dTreeAccuracy * len(data_test))) + " correctly classified out of " + str(len(data_test)))
     print("Total time: " + str(end - start) + "\n")
 
 
