@@ -37,13 +37,6 @@ def guassianNaiveBayes(dtrain, ttrain, dtest):
     prediction = gnb.fit(dtrain, ttrain).predict(dtest)
     return prediction
 
-# Running training data through a SVC model
-def supportVectorClassification(dtrain, ttrain, dtest):
-
-    svc = LinearSVC(random_state = 10, max_iter = 200000)
-    prediction = svc.fit(dtrain, ttrain).predict(dtest)
-    return prediction
-
 # Running training data through a k neighbors model
 def kNeighbors(dtrain, ttrain, dtest):
 
@@ -90,14 +83,6 @@ def main():
     end = time.time()
     print("     " + str(round(gnbAccuracy * len(data_test))) + " correctly classified out of " + str(len(data_test)))
     print("Total time: " + str(end - start) + "\n")
-
-    # Running Support Vector Classification
-    #start = time.time();
-    #print("Running Support Vector Classification....")
-    #svcPredicition = supportVectorClassification(data_train, target_train, data_test)
-    #print("Support Vector Classification accuracy : " + str(accuracy_score(target_test, svcPredicition, normalize = True)))
-    #end = time.time();
-    #print("Total time: " + str(end - start) + "\n")
 
     # Running k nearest neighbors
     start = time.time()
